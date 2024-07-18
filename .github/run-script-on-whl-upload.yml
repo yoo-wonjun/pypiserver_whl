@@ -1,0 +1,22 @@
+name: Run Python Script on .whl Upload  # 워크플로우의 이름을 정의합니다.
+
+on:
+  push:
+    paths:
+      - '**/*.whl'  # .whl 파일이 리포지토리에 푸시될 때 트리거됩니다.
+
+jobs:
+  run-script:  # job의 이름을 정의합니다.
+    runs-on: ubuntu-latest  # 이 job이 실행될 환경을 정의합니다. 여기서는 최신 Ubuntu 버전에서 실행됩니다.
+
+    steps:  # job 내에서 실행될 단계들을 정의합니다.
+    - name: Checkout repository  # 첫 번째 단계의 이름
+      uses: actions/checkout@v2  # 이 단계에서 GitHub Actions의 checkout 액션을 사용하여 리포지토리의 코드를 체크아웃합니다.
+
+    - name: Set up Python  # 두 번째 단계의 이름
+      uses: actions/setup-python@v2  # 이 단계에서 GitHub Actions의 setup-python 액션을 사용하여 Python을 설정합니다.
+      with:
+        python-version: '3.x'  # 설치할 Python의 버전을 지정합니다.
+
+    - name: Run custom Python script  # 세 번째 단계의 이름
+      run: python /root/auto.py  # 이 단계에서 커스텀 파이썬 스크립트를 실행합니다.
