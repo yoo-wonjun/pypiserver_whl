@@ -6,8 +6,8 @@ import sys
 print(os.system('apt list cv2'))
 
 # 설정
-GIT_REPO_URL = "https://github.com/username/repo-name.git"
-PACKAGE_DIR = "/packages"
+GIT_REPO_URL = "https://github.com/yoo-wonjun/pypiserver_whl.git"
+PACKAGE_DIR = "packages"
 
 def run_command(command, cwd=None):
     result = subprocess.run(command, shell=True, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
